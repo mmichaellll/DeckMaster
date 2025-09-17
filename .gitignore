@@ -51,6 +51,8 @@ coverage.xml
 .pytest_cache/
 cover/
 
+flashcard.db
+
 # Translations
 *.mo
 *.pot

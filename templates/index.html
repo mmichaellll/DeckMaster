@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}
+    Decks
+{% endblock %}    
+{% block main %}
+    {% if session['username'] %}
+        <h1>Hello, {{ session['username'] }}!</h1>
+        <h2>Here are your decks to study :)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Deck Name</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Category</th>
+                    <th>Tag</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for deck in decks %}
+                    {% for flashcard in flashcards[deck[0]] %}
+                        <tr>
+                            <td>{{ deck[1] }}</td>
+                            <td>{{ flashcard[1] }}</td>
+                            <td>{{ flashcard[2] }}</td>
+                            <td>{{ flashcard[3] }}</td>      
+                            <td>{{ flashcard[4] }}</td>                      
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+    <h1>Hello, guest!</h1>
+    {% endif %}
+
+{% endblock %}

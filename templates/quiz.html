@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block title %}
+Quiz
+{% endblock %}
+
+{% block main %}
+<h1>Question {{ current_index }} of {{ total_questions}}</h1>
+<div id="quiz-card">
+    <h2>{{ question }}</h2>
+    <form action="/quiz" method='post'>
+        <input type='text' name='user_answer' placeholder="Your answer" autocomplete="off" autofocus>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block title %}
+Flashcards
+{% endblock %}
+
+{% block main %}
+<h1>Flashcards</h1>
+<div id="card" class="flip-card">
+    <div class="flip-card-inner">
+        <div id='card-front' class='flip-card-front'>
+            <h1 id='question'>{{ flashcard["question"] }}</h1>
+        </div>
+        <div id='card-back' class='flip-card-back invisible'>
+            <h1 id='answer'>{{ flashcard["answer"] }}</h1>
+        </div>
+    </div>
+    <div class="card-buttons">        
+        <button id="btn_flip" onclick="flipCard()">Flip</button>
+        <form action="/next_flashcard" method="post">
+            <input type="submit" name="next" value="Next">
+        </form>
+    </div>
+
+</div>
+<script>
+        const answer = "{{ flashcard['answer'] }}";
+        if (answer == "") {
+            document.getElementById("btn_flip").disabled = true;
+        }
+        function flipCard() {
+            front = document.getElementById("card-front");
+            back = document.getElementById("card-back");
+            front.classList.toggle("invisible");
+            back.classList.toggle("invisible");
+            }
+</script>
+{% endblock %}

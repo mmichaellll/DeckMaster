@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}
+Flashcards Setup
+{% endblock %}
+
+{% block main %}
+<form action='/flashcards' method="post">
+    <select id='tag' name='tag' required>
+        <option disabled selected value="">Select a Tag</option>
+        {% for tag in tags %}
+            <option value="{{ tag }}">{{ tag }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Start Flashcards</button>
+</form>
+{% endblock %}
